@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Leon — Flight Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <!-- In-flight HUD -->
+    <div id="hud" class="hud hidden">
+      <div class="brand"><span class="dot"></span>LEON<small>backend engineer</small></div>
+      <canvas id="minimap" class="minimap" width="360" height="360"></canvas>
+      <div class="gauges">
+        <div class="gauge"><label>SPD</label><b id="spd">0</b><span>kt</span></div>
+        <div class="gauge"><label>ALT</label><b id="alt">0</b><span>ft</span></div>
+        <div class="gauge"><label>ISLANDS</label><b id="found">0/5</b></div>
+      </div>
+      <div id="keys-hint" class="keys-hint desktop-only"></div>
+      <button id="prompt" class="prompt hidden"></button>
+      <div id="readbar" class="readbar hidden">
+        <button data-act="prev">◀ <kbd>A</kbd></button>
+        <button data-act="back"><kbd>E</kbd> Back</button>
+        <button data-act="open" class="open">Open ↗ <kbd>Enter</kbd></button>
+        <button data-act="next"><kbd>D</kbd> ▶</button>
+      </div>
+      <div id="toast" class="toast"></div>
+    </div>
+
+    <!-- How to play -->
+    <section id="intro" class="intro">
+      <div class="intro-card">
+        <p class="eyebrow">✦ Flight log of</p>
+        <h1>Leon<span>.</span></h1>
+        <p class="tag">I build the stuff you never see.<br />Today, I'm flying.</p>
+
+        <div class="howto desktop-only">
+          <div class="key-group">
+            <div class="wasd">
+              <kbd class="w">W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+            </div>
+            <span>Fly &amp; walk</span>
+          </div>
+          <div class="key-group">
+            <kbd class="wide">Shift</kbd>
+            <span>Boost / run</span>
+          </div>
+          <div class="key-group">
+            <kbd>E</kbd>
+            <span>Land &amp; interact</span>
+          </div>
+        </div>
+        <div class="howto touch-only">
+          <div class="key-group"><span class="big">👆</span><span>Drag to steer</span></div>
+          <div class="key-group"><span class="big">🏝️</span><span>Tap “Land” near islands</span></div>
+        </div>
+
+        <p class="mission">Mission: land on all <b>5 islands</b>, hop out and read the signs. Follow the glowing beacons.</p>
+        <button id="start" class="start">Take off ✈</button>
+        <p class="hint desktop-only">or press any key</p>
+      </div>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
